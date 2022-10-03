@@ -22,10 +22,9 @@ CREATE TABLE "stations" (
 );
 
 CREATE TABLE "station_personell" (
-  "pers_nr" integer,
+  "pers_nr" integer PRIMARY KEY,
   "station_nr" integer,
-  "name" text,
-  PRIMARY KEY ("pers_nr", "station_nr")
+  "name" text
 );
 
 CREATE TABLE "caregivers" (

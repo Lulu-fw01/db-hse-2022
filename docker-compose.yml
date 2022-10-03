@@ -1,38 +1,40 @@
 version: "3.9"
 services:
-  postgres-1:
+  postgres-library:
     image: postgres:14.5
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-1"
+      PGDATA: "/var/lib/postgresql/data/pgdata-library"
     volumes:
-      - ./docker/db/scripts/first_db:/docker-entrypoint-initdb.d
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
       - ./dz:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-  postgres-2:
+
+  postgres-trains:
     image: postgres:14.5
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-2"
+      PGDATA: "/var/lib/postgresql/data/pgdata-trains-6"
     volumes:
-      - ./docker/db/scripts/second_db:/docker-entrypoint-initdb.d
+      - ./docker/db/scripts/trains:/docker-entrypoint-initdb.d
       - ./dz:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
-  postgres-3:
+      - "5436:5432"
+
+  postgres-hospital:
     image: postgres:14.5
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-3"
+      PGDATA: "/var/lib/postgresql/data/pgdata-hospital"
     volumes:
-      - ./docker/db/scripts/third_db:/docker-entrypoint-initdb.d
+      - ./docker/db/scripts/hospital:/docker-entrypoint-initdb.d
       - ./dz:/var/lib/postgresql/data
     ports:
       - "5434:5432"
