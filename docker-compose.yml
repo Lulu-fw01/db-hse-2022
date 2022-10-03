@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  postgres:
+  postgres-1:
     image: postgres:14.5
     environment:
       POSTGRES_DB: "MARKOV_205"
@@ -8,7 +8,31 @@ services:
       POSTGRES_PASSWORD: "MARKOV_205"
       PGDATA: "/var/lib/postgresql/data/pgdata-1"
     volumes:
-      - docker/db/scripts/first_db:/docker-entrypoint-initdb.d
-      - dz:/var/lib/postgresql/data-1
+      - ./docker/db/scripts/first_db:/docker-entrypoint-initdb.d
+      - ./dz:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  postgres-2:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARKOV_205"
+      POSTGRES_USER: "MARKOV_205"
+      POSTGRES_PASSWORD: "MARKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata-2"
+    volumes:
+      - ./docker/db/scripts/second_db:/docker-entrypoint-initdb.d
+      - ./dz:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+  postgres-3:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARKOV_205"
+      POSTGRES_USER: "MARKOV_205"
+      POSTGRES_PASSWORD: "MARKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata-3"
+    volumes:
+      - ./docker/db/scripts/third_db:/docker-entrypoint-initdb.d
+      - ./dz:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
