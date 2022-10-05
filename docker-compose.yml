@@ -9,7 +9,7 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata-library"
     volumes:
       - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
-      - ./dz:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
@@ -22,7 +22,7 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata-trains-6"
     volumes:
       - ./docker/db/scripts/trains:/docker-entrypoint-initdb.d
-      - ./dz:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
     ports:
       - "5436:5432"
 
@@ -35,6 +35,6 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata-hospital"
     volumes:
       - ./docker/db/scripts/hospital:/docker-entrypoint-initdb.d
-      - ./dz:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
     ports:
       - "5434:5432"
