@@ -1,1 +1,4 @@
-SELECT surname FROM readers WHERE address LIKE '%Moscow%' OR address LIKE  '%Москва%'
+SELECT surname
+FROM readers
+WHERE address LIKE '%Moscow%'
+   OR address LIKE '%Москва%'
