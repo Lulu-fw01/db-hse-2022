@@ -2,42 +2,45 @@ version: "3.9"
 services:
   postgres-library:
     image: postgres:14.5
+    command: ["postgres", "-c", "config_file=/etc/library/postgresql.conf"]
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-library"
+      PGDATA: "/var/lib/postgresql/data/pgdata-library-1"
     volumes:
       - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
       - ./db/data:/var/lib/postgresql/data
-      - ./docker/db/config/library/postgresql.conf:/var/lib/postgresql/data/pgdata-library/postgresql.conf
+      - ./docker/db/config/library/postgresql.conf:/etc/library/postgresql.conf
     ports:
       - "5432:5432"
 
   postgres-trains:
     image: postgres:14.5
+    command: ["postgres", "-c", "config_file=/etc/trains/postgresql.conf"]
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-trains-6"
+      PGDATA: "/var/lib/postgresql/data/pgdata-trains-7"
     volumes:
       - ./docker/db/scripts/trains:/docker-entrypoint-initdb.d
       - ./db/data:/var/lib/postgresql/data
-      - ./docker/db/config/trains/postgresql.conf:/var/lib/postgresql/data/pgdata-trains-6/postgresql.conf
+      - ./docker/db/config/trains/postgresql.conf:/etc/trains/postgresql.conf
     ports:
       - "5436:5432"
 
   postgres-hospital:
     image: postgres:14.5
+    command: ["postgres", "-c", "config_file=/etc/hospital/postgresql.conf"]
     environment:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-hospital"
+      PGDATA: "/var/lib/postgresql/data/pgdata-hospital-1"
     volumes:
       - ./docker/db/scripts/hospital:/docker-entrypoint-initdb.d
       - ./db/data:/var/lib/postgresql/data
-      - ./docker/db/config/hospital/postgresql.conf:/var/lib/postgresql/data/pgdata-hospital/postgresql.conf
+      - ./docker/db/config/hospital/postgresql.conf:/etc/hospital/postgresql.conf
     ports:
       - "5434:5432"
