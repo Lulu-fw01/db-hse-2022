@@ -16,11 +16,10 @@ CREATE TABLE "trains" (
 );
 
 CREATE TABLE "stations" (
-  "name" text,
+  "name" text PRIMARY KEY,
   "region" text,
   "city" text,
-  "tracks" integer,
-  PRIMARY KEY ("name", "region", "city")
+  "tracks" integer
 );
 
 CREATE TABLE "cities" (
