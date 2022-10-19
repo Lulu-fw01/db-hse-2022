@@ -1,4 +1,5 @@
 SELECT author
 FROM books
 GROUP BY author
-ORDER BY author DESC
+ORDER BY author
+LIMIT 1
