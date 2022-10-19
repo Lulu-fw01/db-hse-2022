@@ -1,3 +1,4 @@
-SELECT DISTINCT name, MAX(pages_num)
+SELECT DISTINCT name, pages_num
 FROM books
-group by name
+ORDER BY pages_num DESC
+LIMIT 1
