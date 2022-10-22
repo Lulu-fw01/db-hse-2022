@@ -7,12 +7,13 @@ services:
       POSTGRES_DB: "MARKOV_205"
       POSTGRES_USER: "MARKOV_205"
       POSTGRES_PASSWORD: "MARKOV_205"
-      PGDATA: "/var/lib/postgresql/data/pgdata-library-1"
+      PGDATA: "/var/lib/postgresql/data/pgdata-library-3"
     volumes:
+      - ./data:/var/lib/postgresql/data
       - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
       ##- ./db/data:/var/lib/postgresql/data
       - ./docker/db/config/library/postgresql.conf:/etc/library/postgresql.conf
-      - ./postgres-data:/var/lib/postgresql/data
+      ##- ./postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
