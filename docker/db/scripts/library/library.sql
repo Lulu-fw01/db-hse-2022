@@ -46,7 +46,7 @@ CREATE TABLE "readers" (
   "birthday" date
 );
 
-ALTER TABLE "books_categories" ADD FOREIGN KEY ("book_isbn") REFERENCES "books" ("isbn");
+ALTER TABLE "books_categories" ADD FOREIGN KEY ("book_isbn") REFERENCES "books" ("isbn") ON DELETE CASCADE;
 
 ALTER TABLE "books_categories" ADD FOREIGN KEY ("category_name") REFERENCES "categories" ("name");
 
@@ -54,8 +54,8 @@ ALTER TABLE "books" ADD FOREIGN KEY ("publisher_name") REFERENCES "publishers" (
 
 ALTER TABLE "categories" ADD FOREIGN KEY ("parent_category") REFERENCES "categories" ("name");
 
-ALTER TABLE "book_copies" ADD FOREIGN KEY ("isbn") REFERENCES "books" ("isbn");
+ALTER TABLE "book_copies" ADD FOREIGN KEY ("isbn") REFERENCES "books" ("isbn") ON DELETE CASCADE;
 
-ALTER TABLE "rented_books" ADD FOREIGN KEY ("book_id", "isbn") REFERENCES "book_copies" ("id", "isbn");
+ALTER TABLE "rented_books" ADD FOREIGN KEY ("book_id", "isbn") REFERENCES "book_copies" ("id", "isbn") ON DELETE CASCADE;
 
 ALTER TABLE "rented_books" ADD FOREIGN KEY ("reader_id") REFERENCES "readers" ("id");
