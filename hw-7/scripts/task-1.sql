@@ -1,9 +1,9 @@
 create or replace procedure new_job(
-    id in job.job_id%type,
-    title in job.job_title%type,
+    id in jobs.job_id%type,
+    title in jobs.job_title%type,
     min_sal in jobs.min_salary%type
 )
-language plsql
+    language plsql
 as
 $$
 declare
