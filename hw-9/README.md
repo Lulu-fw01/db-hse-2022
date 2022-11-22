@@ -1,7 +1,10 @@
+Выполнил Макров Л. И.
+БПИ205
+
 ### task 1
 
 ```postgresql
-SELECT (LENGTH(race) + bit_length(name)) as calculation
+SELECT (length(race) + bit_length(name)) as calculation
 FROM demographics
 ```
 
@@ -64,5 +67,5 @@ select name,
        price,
        ROUND((price / (weight / 1000))::numeric, 2)::float AS price_per_kg
 from products
-order by price_per_kg
+order by price_per_kg, name
 ```
