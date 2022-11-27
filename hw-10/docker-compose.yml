@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  oracle-library:
+    image: oracle/database:12.1.0.2-ee
+    environment:
+      - ORACLE_PWD=testing12345
+      ##PGDATA: "/var/lib/postgresql/data/pgdata-library-3"
+    ##volumes:
+      ##- ./data:/var/lib/postgresql/data
+      ##- ./docker/db/scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
