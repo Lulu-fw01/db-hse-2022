@@ -1,3 +1,17 @@
+# HW 8
+Выполнил Марков Л.И. БПИ205
+
+## 1
+
+## 2
+
+## 3
+
+## 4
+
+## 5
+
+```postgresql
 create
     or replace function GET_JOB_COUNT(
     emp_id in job_history.employee_id%type) returns integer
@@ -15,3 +29,7 @@ begin
     return jobs_count;
 end;
 $$
+```
+
+## 6
+
