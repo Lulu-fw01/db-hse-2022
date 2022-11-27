@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  postgres-hw-8-db:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARKOV_205"
+      POSTGRES_USER: "MARKOV_205"
+      POSTGRES_PASSWORD: "MARKOV_205"
+      ##PGDATA: "/var/lib/postgresql/data/pgdata-library-3"
+    volumes:
+      ##- ./data:/var/lib/postgresql/data
+      - ./docker/init:/docker-entrypoint-initdb.d
+      ##- ./db/data:/var/lib/postgresql/data
+      ##- ./docker/db/config/library/postgresql.conf:/etc/library/postgresql.conf
+      ##- ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
