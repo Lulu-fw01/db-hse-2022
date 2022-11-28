@@ -3,7 +3,7 @@ create or replace procedure new_job(
     title in jobs.job_title%type,
     min_sal in jobs.min_salary%type
 )
-    language plsql
+    language plpgsql
 as
 $$
 declare
