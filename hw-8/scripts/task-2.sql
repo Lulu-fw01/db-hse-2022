@@ -3,7 +3,7 @@ or replace procedure add_job_hist (
     target_employee_id in job_history.employee_id%type,
     new_job_id in job_history.job_id%type
 )
-language plsql
+language plpgsql
 as
 $$
 begin
