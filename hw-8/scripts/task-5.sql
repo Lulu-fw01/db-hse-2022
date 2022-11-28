@@ -1,7 +1,7 @@
 create
     or replace function GET_JOB_COUNT(
     emp_id in job_history.employee_id%type) returns integer
-    language plsql
+    language plpgsql
 as
 $$
 declare

@@ -1,7 +1,9 @@
 # HW 8
+
 Выполнил Марков Л.И. БПИ205
 
 ## 1
+
 ```postgresql
 create or replace procedure new_job(
     id in jobs.job_id%type,
@@ -20,10 +22,10 @@ end;
 $$
 ```
 
-
 ## 2
 
 ## 3
+
 ```postgresql
 create
     or replace procedure upd_job_sal(
@@ -49,6 +51,7 @@ exception
 end
 $$
 ```
+
 ## 4
 
 ## 5
@@ -57,7 +60,7 @@ $$
 create
     or replace function GET_JOB_COUNT(
     emp_id in job_history.employee_id%type) returns integer
-    language plsql
+    language plpgsql
 as
 $$
 declare
