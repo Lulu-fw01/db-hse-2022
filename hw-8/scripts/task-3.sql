@@ -4,19 +4,20 @@ create
     new_min_sal in jobs.min_salary%type,
     new_max_sal in jobs.max_salary%type
 )
-    language plsql
+    language plpgsql
 as
 $$
 begin
-    if (new_min_sal > new_max_sal) then
-        RAISE EXCEPTION 'min salary > max salary';
-    end if;
-
-    update jobs set min_salary=new_min_sal, max_salary=new_max_sal where job_id = target_job_id;
+    IF (new_max_sal::INTEGER) < (new_min_sal::INTEGER) THEN
+        RAISE EXCEPTION 'ERROR: min salary > max salary';
+    ELSE
+        UPDATE jobs SET min_salary=new_min_sal, max_salary=new_max_sal WHERE job_id = target_job_id;
+    END IF;
 exception
     when OTHERS
-        then if (SQLSTATE = -54) then
-            raise notice 'Locked error';
-        end if;
-end;
+        then
+            IF (SQLSTATE = -54) THEN
+                raise notice 'Locked error';
+            END IF;
+end
 $$
