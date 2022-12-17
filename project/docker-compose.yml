@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres-library:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARKOV_205"
+      POSTGRES_USER: "MARKOV_205"
+      POSTGRES_PASSWORD: "MARKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./docker/db/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
