@@ -10,6 +10,12 @@ CREATE TYPE "report_reason" AS ENUM (
   'fraud'
 );
 
+CREATE TYPE "report_status" AS ENUM (
+    'opened',
+    'rejected',
+    'resolved'
+);
+
 CREATE TABLE "users" (
   "email" text PRIMARY KEY,
   "name" varchar(32) CONSTRAINT username_check CHECK (char_length(name) >= 2),
@@ -72,7 +78,8 @@ CREATE TABLE "user_reports" (
   "reporter_email" text NOT NULL REFERENCES users(email),
   "violator_email" text NOT NULL REFERENCES users(email),
   "comment" varchar(256) CONSTRAINT user_report_comment_check CHECK (char_length(comment) >= 1),
-  "category" report_reason NOT NULL
+  "category" report_reason NOT NULL,
+  "status" report_status NOT NULL DEFAULT 'opened'
 );
 
 CREATE TABLE "guide_reports" (
@@ -80,7 +87,8 @@ CREATE TABLE "guide_reports" (
   "reporter_email" text NOT NULL REFERENCES users(email),
   "guide_id" bigint NOT NULL REFERENCES guides(id),
   "comment" varchar(256) CONSTRAINT guide_report_comment_check CHECK (char_length(comment) >= 1),
-  "category" report_reason NOT NULL
+  "category" report_reason NOT NULL,
+  "status" report_status NOT NULL DEFAULT 'opened'
 );
 
 -- 1
@@ -156,10 +164,10 @@ ORDER BY guide_rating
 LIMIT 10;
 
 -- 12
--- TODO: дописать join
-SELECT guide_id
-FROM favourites
-WHERE user_email = 'example@mail.com';
+SELECT guide_id, g.title
+FROM favourites JOIN guides g on g.id = favourites.guide_id
+WHERE user_email = 'example@mail.com'
+ORDER BY g.edit_date;
 
 
 -- 13
@@ -181,7 +189,13 @@ SELECT *
 FROM guide_reports;
 
 -- 17
+UPDATE user_reports
+SET status = 'rejected'
+WHERE id = 1;
 -- 18
+UPDATE guide_reports
+SET status = 'rejected'
+WHERE id = 1;
 
 -- 19
 -- Модератор может заблокировать пользователя;
