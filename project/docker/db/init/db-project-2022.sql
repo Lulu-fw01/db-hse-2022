@@ -14,7 +14,7 @@ CREATE TYPE "report_status" AS ENUM (
     'opened',
     'rejected',
     'resolved'
-)
+);
 
 CREATE TABLE "users" (
   "email" text PRIMARY KEY,
