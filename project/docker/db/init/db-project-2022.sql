@@ -10,6 +10,12 @@ CREATE TYPE "report_reason" AS ENUM (
   'fraud'
 );
 
+CREATE TYPE "report_status" AS ENUM (
+    'opened',
+    'rejected',
+    'resolved'
+)
+
 CREATE TABLE "users" (
   "email" text PRIMARY KEY,
   "name" varchar(32),
@@ -72,7 +78,8 @@ CREATE TABLE "user_reports" (
   "reporter_email" text NOT NULL REFERENCES users(email),
   "violator_email" text NOT NULL REFERENCES users(email),
   "comment" varchar(256),
-  "category" report_reason NOT NULL
+  "category" report_reason NOT NULL,
+  "status" report_status NOT NULL DEFAULT 'opened'
 );
 
 CREATE TABLE "guide_reports" (
@@ -80,7 +87,8 @@ CREATE TABLE "guide_reports" (
   "reporter_email" text NOT NULL REFERENCES users(email),
   "guide_id" bigint NOT NULL REFERENCES guides(id),
   "comment" varchar(256),
-  "category" report_reason NOT NULL
+  "category" report_reason NOT NULL,
+  "status" report_status NOT NULL DEFAULT 'opened'
 );
 
 -- ALTER TABLE "guides" ADD FOREIGN KEY ("creator_email") REFERENCES "users" ("email");
