@@ -90,33 +90,3 @@ CREATE TABLE "guide_reports" (
   "category" report_reason NOT NULL,
   "status" report_status NOT NULL DEFAULT 'opened'
 );
-
--- ALTER TABLE "guides" ADD FOREIGN KEY ("creator_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "tags" ADD FOREIGN KEY ("category_name") REFERENCES "categories" ("category_name");
---
--- ALTER TABLE "tags" ADD FOREIGN KEY ("guide_id") REFERENCES "guides" ("id");
---
--- ALTER TABLE "interactions" ADD FOREIGN KEY ("guide_id") REFERENCES "guides" ("id");
---
--- ALTER TABLE "interactions" ADD FOREIGN KEY ("user_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "comments" ADD FOREIGN KEY ("user_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "comments" ADD FOREIGN KEY ("guide_id") REFERENCES "guides" ("id");
---
--- ALTER TABLE "favourites" ADD FOREIGN KEY ("guide_id") REFERENCES "guides" ("id");
---
--- ALTER TABLE "favourites" ADD FOREIGN KEY ("user_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "subscriptions" ADD FOREIGN KEY ("user_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "subscriptions" ADD FOREIGN KEY ("subscription_user_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "guide_reports" ADD FOREIGN KEY ("guide_id") REFERENCES "guides" ("id");
---
--- ALTER TABLE "guide_reports" ADD FOREIGN KEY ("reporter_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "user_reports" ADD FOREIGN KEY ("violator_email") REFERENCES "users" ("email");
---
--- ALTER TABLE "user_reports" ADD FOREIGN KEY ("reporter_email") REFERENCES "users" ("email");
